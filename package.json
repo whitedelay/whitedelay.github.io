@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "export": "next export"
   },
   "dependencies": {
     "clsx": "^1.1.1",
@@ -36,15 +37,5 @@
     "postcss": "^8.2.8",
     "tailwindcss": "^2.0.4"
   },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Jfelix61/nextjs-starter-blog.git"
-  },
-  "homepage": "https://github.com/Jfelix61/nextjs-starter-blog#readme",
-  "keywords": [
-    "next.js",
-    "blog",
-    "template"
-  ]
+  "license": "MIT"
 }
