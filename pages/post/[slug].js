@@ -103,7 +103,7 @@ const MarkdownImage = ({ alt, src }) => {
       src={isHttp ? src : require(`../../content/assets/${src}`)}
       webpSrc={isHttp ? src : require(`../../content/assets/${src}?webp`)}
       previewSrc={isHttp ? src : require(`../../content/assets/${src}?lqip`)}
-      className="max-w-full rounded"
+      className="m-auto rounded"
     />
   );
 };
