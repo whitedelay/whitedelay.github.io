@@ -1,15 +1,12 @@
 {
   "siteMetadata": {
-    "title": "Next.js Starter Blog",
+    "title": "whitedelay",
     "author": {
-      "name": "Jose Felix",
-      "summary": "who works building clean user interfaces with React."
+      "name": "Jiyeon Baek",
+      "summary": "Junior programmer"
     },
-    "description": "A blog created with Next.js and Tailwind.css",
-    "siteUrl": "https://nextjs-starter-blog-demo.netlify.app/",
-    "language": "en-US",
-    "social": {
-      "twitter": "Jose_R_Felix"
-    }
+    "description": "dev blog",
+    "siteUrl": "",
+    "language": "ko-KR"
   }
 }
