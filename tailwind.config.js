@@ -36,18 +36,19 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
-      colors: {
-        "neon-orange": "#f92300",
-      },
       fontSize: {
         "7xl": "4.5rem",
       },
       spacing: {
         14: "3.375rem",
       },
+      width: {
+        overflow: "calc(100% + (1.25rem *2))",
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {
+            maxWidth: null,
             color: theme("colors.gray.800"),
             blockquote: {
               borderLeftColor: theme("colors.gray.700"),
@@ -59,17 +60,13 @@ module.exports = {
               backgroundColor: theme("colors.gray.700"),
             },
             a: {
-              color: theme("colors.neon-orange"),
+              color: theme("colors.blue.500"),
             },
           },
         },
-
         dark: {
           css: {
             color: theme("colors.gray.100"),
-            blockquote: {
-              borderLeftColor: theme("colors.gray.300"),
-            },
             "ol > li::before": {
               color: theme("colors.gray.300"),
             },
@@ -77,7 +74,7 @@ module.exports = {
               backgroundColor: theme("colors.gray.300"),
             },
             a: {
-              color: theme("colors.yellow.500"),
+              color: theme("colors.blue.300"),
             },
             h1: {
               color: theme("colors.gray.100"),
@@ -110,13 +107,17 @@ module.exports = {
               color: theme("colors.gray.100"),
               borderLeftColor: theme("colors.gray.200"),
             },
+            hr: {
+              borderColor: theme("colors.gray.500"),
+            },
           },
         },
       }),
     },
     fontFamily: {
-      display: ["Open Sans", ...defaultSans],
-      body: ["Merriweather", ...defaultSerif],
+      display: ["Roboto Slab", "Noto Sans KR", ...defaultSerif],
+      serif: ["Roboto Slab", ...defaultSerif],
+      body: ["Noto Sans KR", ...defaultSans],
     },
   },
   variants: {},

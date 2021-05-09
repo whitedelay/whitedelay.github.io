@@ -1,8 +1,10 @@
 a:hover {
-  @apply underline;
+  @apply transition-opacity;
+  @apply duration-200;
+  @apply opacity-70;
 }
 
 span,
 p {
-  @apply font-light;
+  @apply font-normal;
 }

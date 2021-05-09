@@ -1,56 +1,65 @@
-import Link from "next/link";
-import ReactMarkdown from "react-markdown/with-html";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import style from "react-syntax-highlighter/dist/cjs/styles/prism/dracula";
+import { FaRegCalendarAlt } from "react-icons/fa";
 
-import { Layout, Image, SEO, Bio } from "@components/common";
+import { Layout } from "@components/Layout";
+import { SEO } from "@components/Seo";
+import { Navigation } from "@components/Navigation";
+import { Image } from "@components/Image";
+
 import { getPostBySlug, getPostsSlugs } from "@utils/posts";
 
-export default function Post({ post, frontmatter, nextPost, previousPost }) {
+// markdown
+import ReactMarkdownWithHtml from "react-markdown/with-html";
+import gfm from "remark-gfm";
+
+// katex
+import { InlineMath, BlockMath } from "react-katex";
+import math from "remark-math";
+
+// syntax highlighting
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import style from "react-syntax-highlighter/dist/cjs/styles/prism/tomorrow";
+
+export default function Post({ frontmatter, post, previousPost, nextPost }) {
   return (
     <Layout>
-      <SEO
-        title={frontmatter.title}
-        description={frontmatter.description || post.excerpt}
-      />
-
-      <article>
-        <header className="mb-8">
-          <h1 className="mb-2 text-6xl font-black leading-none font-display">
+      <SEO title={frontmatter.title} description={frontmatter.description} />
+      <article className="max-w-none">
+        <header className="mb-4">
+          <h1 className="mb-4 sm:text-5xl text-4xl font-body font-black sm:leading-tight leading-tight">
             {frontmatter.title}
           </h1>
-          <p className="text-sm">{frontmatter.date}</p>
+          <p className="flex items-center	text-sm sm:text-base font-body font-semibold text-gray-400 mb-2 pl-1">
+            <FaRegCalendarAlt className="w-4 h-4 mr-2" />
+            {frontmatter.date}
+          </p>
+          <p className="flex items-center pl-1">
+            {frontmatter.tags &&
+              frontmatter.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="text-sm sm:text-base font-serif font-bold text-gray-600 dark:text-blue-200 pr-2"
+                >
+                  {"#" + tag}
+                </span>
+              ))}
+          </p>
         </header>
-        <ReactMarkdown
-          className="mb-4 prose lg:prose-lg dark:prose-dark"
-          escapeHtml={false}
-          source={post.content}
-          renderers={{ code: CodeBlock, image: MarkdownImage }}
+        <ReactMarkdownWithHtml
+          plugins={[[gfm, { singleTilde: false }], math]}
+          className="mb-4 prose prose-sm sm:prose dark:prose-dark"
+          skipHtml={false}
+          children={post.content}
+          renderers={{
+            code: CodeBlock,
+            image: MarkdownImage,
+            inlineMath: ({ value }) => <InlineMath math={value} />,
+            math: ({ value }) => <BlockMath math={value} />,
+          }}
+          allowDangerousHtml
         />
         <hr className="mt-4" />
-        <footer>
-          <Bio className="mt-8 mb-16" />
-        </footer>
       </article>
-
-      <nav className="flex flex-wrap justify-between mb-10">
-        {previousPost ? (
-          <Link href={"/post/[slug]"} as={`/post/${previousPost.slug}`}>
-            <a className="text-lg font-bold">
-              ← {previousPost.frontmatter.title}
-            </a>
-          </Link>
-        ) : (
-          <div />
-        )}
-        {nextPost ? (
-          <Link href={"/post/[slug]"} as={`/post/${nextPost.slug}`}>
-            <a className="text-lg font-bold">{nextPost.frontmatter.title} →</a>
-          </Link>
-        ) : (
-          <div />
-        )}
-      </nav>
+      <Navigation previousPost={previousPost} nextPost={nextPost} />
     </Layout>
   );
 }
@@ -86,12 +95,15 @@ const CodeBlock = ({ language, value }) => {
   );
 };
 
-const MarkdownImage = ({ alt, src }) => (
-  <Image
-    alt={alt}
-    src={require(`../../content/assets/${src}`)}
-    webpSrc={require(`../../content/assets/${src}?webp`)}
-    previewSrc={require(`../../content/assets/${src}?lqip`)}
-    className="w-full"
-  />
-);
+const MarkdownImage = ({ alt, src }) => {
+  const isHttp = src.startsWith("http") ? true : false;
+  return (
+    <Image
+      alt={alt}
+      src={isHttp ? src : require(`../../content/assets/${src}`)}
+      webpSrc={isHttp ? src : require(`../../content/assets/${src}?webp`)}
+      previewSrc={isHttp ? src : require(`../../content/assets/${src}?lqip`)}
+      className="max-w-full rounded"
+    />
+  );
+};
