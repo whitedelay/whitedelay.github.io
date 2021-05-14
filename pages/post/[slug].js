@@ -5,7 +5,7 @@ import { SEO } from "@components/Seo";
 import { Navigation } from "@components/Navigation";
 import { Image } from "@components/Image";
 
-import { getPostBySlug, getPostsSlugs } from "@utils/posts";
+import { getPostBySlug, getPostsSlugs } from "@lib/posts";
 
 // markdown
 import ReactMarkdownWithHtml from "react-markdown/with-html";
@@ -57,7 +57,7 @@ export default function Post({ frontmatter, post, previousPost, nextPost }) {
           }}
           allowDangerousHtml
         />
-        <hr className="mt-4" />
+        <hr className="my-8 border-gray-500" />
       </article>
       <Navigation previousPost={previousPost} nextPost={nextPost} />
     </Layout>

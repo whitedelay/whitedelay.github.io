@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { useTheme } from "next-themes";
-import { getSiteMetaData } from "@utils/helpers";
+import BLOG from "@/blog.config";
 
 export function Header() {
   const { setTheme, resolvedTheme } = useTheme();
@@ -23,8 +23,7 @@ export function Header() {
   const isRoot = pathname === "/";
   const isDarkMode = resolvedTheme === "dark";
 
-  const siteMetadata = getSiteMetaData();
-  const siteTitle = siteMetadata.title;
+  const siteTitle = BLOG.title;
 
   return (
     <header
@@ -56,7 +55,7 @@ const LargeTitle = ({ title }) => (
     <Link href="/">
       <a
         className={clsx(
-          "text-2xl font-black leading-none text-black no-underline font-display",
+          "text-2xl font-black leading-none text-black no-underline font-serif",
           "sm:text-3xl",
           "dark:text-white"
         )}
@@ -72,7 +71,7 @@ const SmallTitle = ({ title }) => (
     <Link href="/">
       <a
         className={clsx(
-          "font-black text-black no-underline font-display",
+          "font-black text-black no-underline font-serif",
           "dark:text-white",
           "sm:text-2xl",
           "text-xl"

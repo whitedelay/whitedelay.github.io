@@ -1,16 +1,12 @@
 import Head from "next/head";
-
-import { getSiteMetaData } from "@utils/helpers";
+import BLOG from "@/blog.config";
 
 export function SEO({ title, description = "" }) {
-  const siteMetadata = getSiteMetaData();
-
-  const metaDescription = description || siteMetadata.description;
-
+  const metaDescription = description || BLOG.description;
   return (
     <Head>
       <title>
-        {title} | {siteMetadata.title}
+        {title} | {BLOG.title}
       </title>
       <meta name="description" content={metaDescription} />
       <meta property="og:type" content="website" />
