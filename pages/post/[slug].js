@@ -1,3 +1,4 @@
+import { useTheme } from "next-themes";
 import { FaRegCalendarAlt } from "react-icons/fa";
 
 import { Layout } from "@components/Layout";
@@ -20,6 +21,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import style from "react-syntax-highlighter/dist/cjs/styles/prism/tomorrow";
 
 export default function Post({ frontmatter, post, previousPost, nextPost }) {
+  const { setTheme, resolvedTheme } = useTheme();
   return (
     <Layout>
       <SEO title={frontmatter.title} description={frontmatter.description} />
@@ -57,9 +59,18 @@ export default function Post({ frontmatter, post, previousPost, nextPost }) {
           }}
           allowDangerousHtml
         />
-        <hr className="my-8 border-gray-500" />
       </article>
+      <hr className="my-5 dark:border-gray-500" />
       <Navigation previousPost={previousPost} nextPost={nextPost} />
+      <script
+        src="https://utteranc.es/client.js"
+        repo="whitedelay/whitedelay.github.io"
+        issue-term="pathname"
+        label="comments"
+        theme={`github-${resolvedTheme}`}
+        crossorigin="anonymous"
+        async
+      ></script>
     </Layout>
   );
 }

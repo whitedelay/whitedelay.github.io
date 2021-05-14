@@ -23,7 +23,7 @@ export function PostCard({ slug, title, date, tags, description }) {
                   tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-sm font-serif font-bold text-gray-600 dark:text-blue-200 pr-2"
+                      className="text-sm font-body font-bold text-gray-600 dark:text-blue-200 pr-2"
                     >
                       {"#" + tag}
                     </span>

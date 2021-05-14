@@ -3,8 +3,3 @@ a:hover {
   @apply duration-200;
   @apply opacity-70;
 }
-
-span,
-p {
-  @apply font-normal;
-}
