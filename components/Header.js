@@ -28,9 +28,9 @@ export function Header() {
 
   return (
     <header
-      className={clsx("mx-1 mb-2 flex items-center justify-between ", {
-        "sm:mb-6": isRoot,
-        "sm:mb-4": !isRoot,
+      className={clsx("mx-1 mb-6 flex items-center justify-between ", {
+        "sm:mb-8": isRoot,
+        "sm:mb-6": !isRoot,
       })}
     >
       <div className={"flex flex-row"}>
@@ -57,7 +57,7 @@ const LargeTitle = ({ title }) => (
       <a
         className={clsx(
           "text-2xl font-black leading-none text-black no-underline font-display",
-          "sm:text-4xl",
+          "sm:text-3xl",
           "dark:text-white"
         )}
       >

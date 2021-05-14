@@ -24,7 +24,7 @@ export default function Post({ frontmatter, post, previousPost, nextPost }) {
     <Layout>
       <SEO title={frontmatter.title} description={frontmatter.description} />
       <article className="max-w-none">
-        <header className="mb-4">
+        <header className="mb-2 sm:mb-4">
           <h1 className="mb-4 sm:text-5xl text-4xl font-body font-black sm:leading-tight leading-tight">
             {frontmatter.title}
           </h1>
