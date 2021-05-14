@@ -5,8 +5,8 @@ export function PostCard({ slug, title, date, tags, description }) {
   return (
     <Link href={"/post/[slug]"} as={`/post/${slug}`}>
       <a>
-        <div className="mb-3 p-2 px-4 transition duration-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600">
-          <div className="mb-1">
+        <div className="my-2 p-2 px-4 transition duration-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+          <div>
             <h3 className="mb-3 font-body text-2xl sm:text-3xl font-extrabold">
               {title}
             </h3>
