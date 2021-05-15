@@ -2,7 +2,6 @@
 title: SSH란❓
 description: SSH에 대한 정리글
 date: 2021-03-09T11:24:00
-slug: what-is-ssh
 tags: ["network", "ssh"]
 ---
 

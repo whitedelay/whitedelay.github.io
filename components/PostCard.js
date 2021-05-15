@@ -7,7 +7,7 @@ export function PostCard({ slug, title, date, tags, description }) {
       <a>
         <div className="my-2 p-2 px-4 transition duration-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
           <div>
-            <h3 className="mb-3 font-body text-2xl sm:text-3xl font-extrabold">
+            <h3 className="mb-3 font-body text-xl sm:text-2xl font-extrabold">
               {title}
             </h3>
             <div className="flex flex-row mb-2 text-gray-400">

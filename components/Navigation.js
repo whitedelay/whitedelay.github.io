@@ -5,7 +5,7 @@ export function Navigation({ previousPost, nextPost }) {
     <nav className="flex flex-wrap justify-between mb-10 mt-3">
       {previousPost ? (
         <Link href={"/post/[slug]"} as={`/post/${previousPost.slug}`}>
-          <a className="text-xl font-bold">
+          <a className="text-base sm:text-lg font-bold">
             ← {previousPost.frontmatter.title}
           </a>
         </Link>
@@ -14,7 +14,9 @@ export function Navigation({ previousPost, nextPost }) {
       )}
       {nextPost ? (
         <Link href={"/post/[slug]"} as={`/post/${nextPost.slug}`}>
-          <a className="text-xl font-bold">{nextPost.frontmatter.title} →</a>
+          <a className="text-base sm:text-lg font-bold">
+            {nextPost.frontmatter.title} →
+          </a>
         </Link>
       ) : (
         <div />
