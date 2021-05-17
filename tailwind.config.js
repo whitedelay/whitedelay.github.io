@@ -50,6 +50,15 @@ module.exports = {
           css: {
             maxWidth: null,
             color: theme("colors.gray.800"),
+            code: {
+              backgroundColor: theme("colors.gray.100"),
+              borderRadius: "0.45rem",
+              padding: "0.225rem",
+              paddingLeft: "0.3rem",
+              paddingRight: "0.3rem",
+            },
+            "code::before": null,
+            "code::after": null,
             blockquote: {
               borderLeftColor: theme("colors.gray.700"),
             },
@@ -98,6 +107,7 @@ module.exports = {
               color: theme("colors.gray.100"),
             },
             code: {
+              backgroundColor: theme("colors.gray.700"),
               color: theme("colors.gray.100"),
             },
             figcaption: {
