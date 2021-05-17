@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 import { FaRegCalendarAlt } from "react-icons/fa";
 
 import { Layout } from "@components/Layout";
@@ -18,14 +20,15 @@ import math from "remark-math";
 
 // syntax highlighting
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import style from "react-syntax-highlighter/dist/cjs/styles/prism/tomorrow";
+import dark from "react-syntax-highlighter/dist/cjs/styles/prism/coldark-dark";
+import light from "react-syntax-highlighter/dist/cjs/styles/prism/coldark-cold";
 
 export default function Post({ frontmatter, post, previousPost, nextPost }) {
   return (
     <Layout>
       <SEO title={frontmatter.title} description={frontmatter.description} />
       <article className="max-w-none">
-        <header className="mb-2 sm:mb-4">
+        <header className="mb-6 sm:mb-10">
           <h1 className="mb-4 sm:text-5xl text-4xl font-body font-black sm:leading-tight leading-tight">
             {frontmatter.title}
           </h1>
@@ -90,6 +93,11 @@ export async function getStaticProps({ params: { slug } }) {
 }
 
 const CodeBlock = ({ language, value }) => {
+  const { resolvedTheme } = useTheme();
+  const [style, setStyle] = useState();
+  useEffect(() => {
+    setStyle(resolvedTheme === "light" ? light : dark);
+  });
   return (
     <SyntaxHighlighter style={style} language={language}>
       {value}
